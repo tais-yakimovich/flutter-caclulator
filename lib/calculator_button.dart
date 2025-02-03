@@ -14,7 +14,7 @@ class calcButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: value == 'C' ? Colors.amber[500] : Colors.brown[300],
           shape: CircleBorder(),
-          padding: EdgeInsets.all(27.0),
+          padding: EdgeInsets.all(20.0),
           
         ),
         child: Text(

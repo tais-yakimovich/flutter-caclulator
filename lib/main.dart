@@ -39,11 +39,23 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       } else if (value == 'C') {
         _expression = '';
         _result = '';
+      } else if (value == '^2') {
+        try {
+          final expression = Expression.parse('($_expression) * ($_expression)');
+          final evaluator = const ExpressionEvaluator();
+          _result = evaluator.eval(expression, {}).toString();
+          _expression += '^2 = $_result';
+        } catch (e) {
+          _result = 'Error';
+        }
+      } else if (value == '%') {
+        _expression += '%';
       } else {
         _expression += value;
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +91,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 _buildRow(['4', '5', '6', '*']),
                 _buildRow(['1', '2', '3', '-']),
                 _buildRow(['C', '0', '=', '+']),
+                _buildRow(['^2', '%']),
               ],
             ),
           ),
